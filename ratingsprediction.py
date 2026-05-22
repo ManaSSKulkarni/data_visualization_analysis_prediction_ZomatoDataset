@@ -12,6 +12,14 @@ matplotlib.use('Agg')
 results = {}
 process_logs = []
 
+import zipfile
+import os
+
+if not os.path.exists("zomato.csv"):
+    with zipfile.ZipFile("zomato.csv.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
+
+
 # Loading Dataset
 data = pd.read_csv('./zomato.csv')
 data.rate = data.rate.replace("NEW", np.nan)
