@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Data Analysis & Machine Learning</h1>
+
+        <h3>Data Pre-processing</h3>
+
+        <div class="process-box">
+
+    <ul>
+
+        {% for log in logs %}
+
+            <li>{{ log }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+        <br><br>
+        <h3>ML Model Results</h3>
+
+        <table class="results-table">
+
+            <tr>
+                <th>Model</th>
+                <th>MSE</th>
+                <th>R2 Score</th>
+            </tr>
+
+            {% for model, values in results.items() %}
+
+            <tr>
+                <td>{{ model }}</td>
+                <td>{{ values.MSE }}</td>
+                <td>{{ values.R2 }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <br><br>
+        <h3>
+            Predicted Rating for New Restaurant:
+            {{ prediction }}
+        </h3>
+
+        <div class="graph-container">
+
+            {% for graph in graphs %}
+
+                <img src="{{ url_for('static', filename='graphs/' + graph) }}">
+
+            {% endfor %}
+
+        </div>
+
+        <br><br>
+
+        <a href="/">
+            <button>Back</button>
+        </a>
+
+    </div>
+
+</body>
+</html>
