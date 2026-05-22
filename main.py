@@ -1,3 +1,10 @@
+import zipfile
+import os
+
+if not os.path.exists("zomato.csv"):
+    with zipfile.ZipFile("zomato.csv.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -6,13 +13,6 @@ from wordcloud import WordCloud
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-
-import zipfile
-import os
-
-if not os.path.exists("zomato.csv"):
-    with zipfile.ZipFile("zomato.csv.zip", "r") as zip_ref:
-        zip_ref.extractall(".")
 
 # Load the dataset
 data = pd.read_csv('zomato.csv')

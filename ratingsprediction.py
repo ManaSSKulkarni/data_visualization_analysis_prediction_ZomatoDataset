@@ -1,3 +1,10 @@
+import zipfile
+import os
+
+if not os.path.exists("zomato.csv"):
+    with zipfile.ZipFile("zomato.csv.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -11,13 +18,6 @@ matplotlib.use('Agg')
 
 results = {}
 process_logs = []
-
-import zipfile
-import os
-
-if not os.path.exists("zomato.csv"):
-    with zipfile.ZipFile("zomato.csv.zip", "r") as zip_ref:
-        zip_ref.extractall(".")
 
 
 # Loading Dataset
