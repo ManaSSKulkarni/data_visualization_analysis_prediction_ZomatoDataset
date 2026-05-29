@@ -1,10 +1,3 @@
-import zipfile
-import os
-
-if not os.path.exists("zomato.csv"):
-    with zipfile.ZipFile("zomato.csv.zip", "r") as zip_ref:
-        zip_ref.extractall(".")
-
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -21,7 +14,13 @@ process_logs = []
 
 
 # Loading Dataset
-data = pd.read_csv('./zomato.csv')
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+zip_path = os.path.join(BASE_DIR, "zomato.zip")
+data = pd.read_csv(zip_path, compression='zip')
+
+
 data.rate = data.rate.replace("NEW", np.nan)
 data.dropna(how='any', inplace=True)
 del data['url']
