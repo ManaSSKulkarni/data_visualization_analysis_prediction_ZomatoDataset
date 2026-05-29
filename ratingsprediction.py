@@ -17,7 +17,7 @@ process_logs = []
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(BASE_DIR, "sampledataset.csv")
-data = pd.read_csv(csv_path)
+data = pd.read_csv(csv_path).sample(2000, random_state=42)
 
 
 data.rate = data.rate.replace("NEW", np.nan)
