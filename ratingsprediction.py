@@ -15,10 +15,9 @@ process_logs = []
 
 # Loading Dataset
 import os
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-zip_path = os.path.join(BASE_DIR, "zomato.zip")
-data = pd.read_csv(zip_path, compression='zip')
+csv_path = os.path.join(BASE_DIR, "sampledataset.csv")
+data = pd.read_csv(csv_path)
 
 
 data.rate = data.rate.replace("NEW", np.nan)
